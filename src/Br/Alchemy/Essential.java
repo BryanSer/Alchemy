@@ -6,6 +6,9 @@
  */
 package Br.Alchemy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Bryan_lzh
@@ -13,9 +16,37 @@ package Br.Alchemy;
  * @since 2018-8-26
  */
 public enum Essential {
-    Earth,
-    Metal,
-    Water,
-    Fire,
-    Wood;
+    Earth("地", 'E'),
+    Metal("钢", 'M'),
+    Water("水", 'W'),
+    Fire("火", 'F'),
+    Wood("木", 'W');
+    private String DisplayName;
+    private char Key;
+
+    public static final Map<Character, Essential> EssentialMap = new HashMap<>();
+
+    static {
+        for (Essential e : Essential.values()) {
+            EssentialMap.put(e.getKey(), e);
+        }
+    }
+    
+    public static Essential getEssential(char key){
+        return EssentialMap.get(key);
+    }
+
+    private Essential(String DisplayName, char Key) {
+        this.DisplayName = DisplayName;
+        this.Key = Key;
+    }
+
+    public String getDisplayName() {
+        return DisplayName;
+    }
+
+    public char getKey() {
+        return Key;
+    }
+
 }
