@@ -6,6 +6,7 @@
  */
 package Br.Alchemy;
 
+import Br.Alchemy.Enum.Essential;
 import Br.API.Data.ProxyUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +27,8 @@ public abstract class Alchemy implements ProxyUtil {
     public static final String ALCHEMY_KEY = "Alchemy";
 
     protected String AlchemyID;
+    protected String DisplayName;
+    protected Map<Essential, Integer> Mate = new EnumMap<>(Essential.class);
 
     protected abstract ItemStack getDefaultItem();
 
@@ -46,4 +49,21 @@ public abstract class Alchemy implements ProxyUtil {
         return toItemStack(info, 1);
     }
 
+    public static String getALCHEMY_KEY() {
+        return ALCHEMY_KEY;
+    }
+
+    public String getAlchemyID() {
+        return AlchemyID;
+    }
+
+    public Map<Essential, Integer> getMate() {
+        return Mate;
+    }
+
+    public String getDisplayName() {
+        return DisplayName;
+    }
+
+    
 }

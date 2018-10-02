@@ -6,6 +6,8 @@
  */
 package Br.Alchemy;
 
+import Br.Alchemy.Enum.Essential;
+import Br.Alchemy.Enum.Pureness;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +61,22 @@ public class AlchemyInfo {
             }
         }
         return null;
+    }
+
+    public String getAlchemyID() {
+        return AlchemyID;
+    }
+
+    public Pureness getPurenessType() {
+        return PurenessType;
+    }
+
+    public Map<Essential, Integer> getContainsEssentials() {
+        return ContainsEssentials;
+    }
+    
+    public Alchemy getAlchemy(){
+        return Data.getAlchemy(this.AlchemyID);
     }
 
 }
