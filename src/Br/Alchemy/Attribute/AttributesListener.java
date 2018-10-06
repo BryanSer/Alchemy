@@ -64,19 +64,19 @@ public class AttributesListener implements Listener {
         //攻击增幅
         damage *= (1 + dam.get(Attributes.ATKBoost));
 
-        int crit_state = 0;//暴击情况 1表示正暴击 -1表示负暴击
-        double crit_damage_effect = 0;//暴击造成的影响
+//        int crit_state = 0;//暴击情况 1表示正暴击 -1表示负暴击
+//        double crit_damage_effect = 0;//暴击造成的影响
         double crit = dam.get(Attributes.Crit);
         if (crit > 0 && Math.random() < crit) {
             double d = damage * (1.5d + dam.get(Attributes.CritExtraDamage));
-            crit_state = 1;
-            crit_damage_effect = d - damage;
+//            crit_state = 1;
+//            crit_damage_effect = d - damage;
             damage = d;
             //TODO: 播放特效
         } else if (crit < 0 && Math.random() < -crit) {
             double d = damage * 0.5;
-            crit_state = -1;
-            crit_damage_effect = d - damage;
+//            crit_state = -1;
+//            crit_damage_effect = d - damage;
             damage = d;
             //TODO: 播放特效
         }

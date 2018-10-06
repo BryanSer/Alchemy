@@ -17,10 +17,12 @@ example:
         Unbreakable: false
         #附魔 附魔ID|附魔等级
         Ench: 
-            - '1|1'
+            - '1-1'
     #使用的效果
     #不需要的条目可以删除
     Use:
+        #使用冷却时间 单位秒 删除或填写-1表示无冷却
+        ColdDown: 100
         #使用的需求
         Requirement:
             #权限
