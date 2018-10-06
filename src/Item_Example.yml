@@ -1,0 +1,54 @@
+#简易物品配置系统 本配置不负责配方部分
+#每个文件里可以写多个物品
+#文件是用来分类的 你如果要全部写一个文件里也没问题
+
+#物品标识符 标识符在所有物品 所有文件中都不能重复
+example:
+    #物品ID
+    Type: 388
+    #物品损伤值
+    Durability: 0
+    #物品详细 里面所有项目可以不存在 删除就行了
+    Meta:
+        DisplayName: '&6物品显示名'
+        Lore:
+            - '&aLore'
+        #无限耐久
+        Unbreakable: false
+        #附魔 附魔ID|附魔等级
+        Ench: 
+            - '1|1'
+    #使用的效果
+    #不需要的条目可以删除
+    Use:
+        #使用的需求
+        Requirement:
+            #权限
+            Permission: 'alchemy.use'
+            #玩家等级
+            Level: 10
+            #炼金等级
+            AlchemyLevel: 3
+        #使用的消耗 如果不足以消耗也无法使用
+        Cost:
+            #钱
+            Money: 100
+            #点卷
+            Point: 0
+            #经验
+            Exp: 10
+            #是否消耗物品本身
+            Self: true
+        #效果
+        Effect:
+            #执行的命令
+            #p:表示由玩家执行  c:表示后台执行
+            #%p表示玩家名字 %time表示执行的时间(仅包括小时:分钟:秒)
+            #tell:是向玩家发送信息
+            #pasop:是玩家执行命令 但是有OP权限
+            Commands:
+                - 'c:eco add %p 100'
+            #暂未启用 临时属性加成
+            #属性名|额外属性值|持续时间(单位秒)
+            Attributes:
+                - 'ATK|100|60'

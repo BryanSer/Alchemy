@@ -6,8 +6,6 @@
  */
 package Br.Alchemy;
 
-import Br.Alchemy.Enum.Essential;
-import Br.Alchemy.Enum.Pureness;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -22,13 +20,11 @@ import org.bukkit.ChatColor;
 public class AlchemyInfo {
 
     private String AlchemyID;
-    private Pureness PurenessType;
     private Map<Essential, Integer> ContainsEssentials = new EnumMap<>(Essential.class);
 
     public AlchemyInfo(String s) {
         String[] var = s.split("-");
         this.AlchemyID = var[0];
-        this.PurenessType = Pureness.getPureness(var[1].charAt(0));
         if (!var[2].equals("null")) {
             String m[] = var[2].split(",");
             for (String e : m) {
@@ -40,7 +36,6 @@ public class AlchemyInfo {
     public String toLore() {
         StringBuffer sb = new StringBuffer(Alchemy.ALCHEMY_KEY);
         sb.append("|");
-        sb.append(AlchemyID).append("-").append(PurenessType.getKey()).append("-");
         if (ContainsEssentials.isEmpty()) {
             sb.append("null");
         } else {
@@ -65,10 +60,6 @@ public class AlchemyInfo {
 
     public String getAlchemyID() {
         return AlchemyID;
-    }
-
-    public Pureness getPurenessType() {
-        return PurenessType;
     }
 
     public Map<Essential, Integer> getContainsEssentials() {

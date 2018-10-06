@@ -16,6 +16,7 @@ import java.util.Map;
  * @since 2018-9-5
  */
 public class Data {
+    public static Main Plugin;
 
     private static final Map<String, Alchemy> RegisteredAlchemy = new HashMap<>();
     
