@@ -61,7 +61,11 @@ public enum Attributes {
     /**
      * 计算生命值加成后的百分比转换生命值
      */
-    HealthBoost("生命值提升", 1, -1, true);
+    HealthBoost("生命值提升", 1, -1, true),
+    /**
+     * 最后加成的伤害
+     */
+    RealDamage("真实伤害",1000,-1000,false);
     private String DisplayName;
     private boolean Rate = false;
     private double Min;
