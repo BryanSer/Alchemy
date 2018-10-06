@@ -30,7 +30,7 @@ public enum Attributes {
      */
     DEF("防御力", 500, -500, false),
     /**
-     * 固定穿透地方防御力, 最多穿透到0
+     * 固定穿透敌方防御力, 最多穿透到0
      */
     FixPenetrate("固定物理穿透", 500, 0, false),
     /**
