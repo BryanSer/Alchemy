@@ -23,7 +23,11 @@ public class ItemManager {
     private static Map<String, EzItem> EzItems = new HashMap<>();
     
     public static void loadFile(){
-        EzItems.clear();
+        for (String key : EzItems.keySet()) {
+            if(EzItems.get(key) instanceof EzItem){
+                EzItems.remove(key);
+            }
+        }
         File folder = new File(Data.Plugin.getDataFolder(), File.separator + "EzItems" + File.separator);
         loadFile(folder);
     }
@@ -40,4 +44,6 @@ public class ItemManager {
             }
         }
     }
+    
+    
 }

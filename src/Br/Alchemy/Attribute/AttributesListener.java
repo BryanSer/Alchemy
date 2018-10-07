@@ -119,21 +119,24 @@ public class AttributesListener implements Listener {
             }, 1);
         }
     }
-    
+
     @EventHandler
-    public void onSwap(PlayerSwapHandItemsEvent evt){
+    public void onSwap(PlayerSwapHandItemsEvent evt) {
         AttributesData.dropCache(evt.getPlayer());
     }
+
     @EventHandler
-    public void onHeld(PlayerItemHeldEvent evt){
+    public void onHeld(PlayerItemHeldEvent evt) {
         AttributesData.dropCache(evt.getPlayer());
     }
+
     @EventHandler
-    public void onQuit(PlayerQuitEvent evt){
+    public void onQuit(PlayerQuitEvent evt) {
         AttributesData.dropCache(evt.getPlayer());
     }
+
     @EventHandler
-    public void onClick(InventoryEvent evt){
+    public void onClick(InventoryEvent evt) {
         for (HumanEntity p : evt.getViewers()) {
             AttributesData.dropCache(p);
         }

@@ -31,7 +31,7 @@ import org.bukkit.inventory.meta.ItemMeta;
  * @version 1.0
  * @since 2018-10-6
  */
-public class EzItem {
+public class EzItem extends Item {
 
     public static final String EzItem_PREFIX = "EzItem";
 
@@ -93,6 +93,7 @@ public class EzItem {
         ColdDown = config.getInt("Use.ColdDown", -1);
     }
 
+    @Override
     public ItemStack getItem() {
         return Item.clone();
     }
@@ -242,7 +243,6 @@ public class EzItem {
         public boolean isSelf() {
             return Self;
         }
-        
-        
+
     }
 }
