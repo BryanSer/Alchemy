@@ -37,8 +37,6 @@ example:
             Money: 100
             #点卷
             Point: 0
-            #经验
-            Exp: 10
             #是否消耗物品本身
             Self: true
         #效果

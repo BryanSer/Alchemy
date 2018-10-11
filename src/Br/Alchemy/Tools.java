@@ -7,6 +7,8 @@
 package Br.Alchemy;
 
 import java.util.Arrays;
+import org.black_ixx.playerpoints.PlayerPoints;
+import org.black_ixx.playerpoints.PlayerPointsAPI;
 
 /**
  *
@@ -17,6 +19,14 @@ public class Tools {
 
     private static final char[] ThiFNum = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
     private static final int Length = ThiFNum.length;
+    private static PlayerPointsAPI PointAPI;
+    
+    public static PlayerPointsAPI getPlayerPointsAPI(){
+        if(PointAPI == null){
+            PointAPI = PlayerPoints.getPlugin(PlayerPoints.class).getAPI();
+        }
+        return PointAPI;
+    }
 
     public static String decodeColorCode(String s) {
         return s.replaceAll("§", "");

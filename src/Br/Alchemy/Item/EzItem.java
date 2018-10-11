@@ -9,6 +9,7 @@ package Br.Alchemy.Item;
 import Br.API.Utils;
 import Br.Alchemy.Attribute.TimeLimitAttributeBoost;
 import Br.Alchemy.Data;
+import Br.Alchemy.Tools;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import org.bukkit.inventory.meta.ItemMeta;
  * @version 1.0
  * @since 2018-10-6
  */
-public class EzItem extends Item {
+public class EzItem extends Item implements Activateable, Consume {
 
     public static final String EzItem_PREFIX = "EzItem";
 
@@ -45,7 +46,6 @@ public class EzItem extends Item {
         } catch (IOException ex) {
             Logger.getLogger(EzItem.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ItemManager.loadFile();
     }
 
     private String Key;
@@ -53,6 +53,7 @@ public class EzItem extends Item {
     private int ColdDown = -1;
     private Requirement Require;
     private EffectData Effect;
+    private Cost CostData;
 
     public EzItem(ConfigurationSection config) {
         Key = config.getName();
@@ -91,11 +92,12 @@ public class EzItem extends Item {
         Require = new Requirement(config.getConfigurationSection("Use.Requirement"));
         Effect = new EffectData(config.getConfigurationSection("Use.Effect"));
         ColdDown = config.getInt("Use.ColdDown", -1);
+        CostData = new Cost(config.getConfigurationSection("Use.Cost"));
     }
 
     @Override
-    public ItemStack getItem() {
-        return Item.clone();
+    protected ItemStack getOriginalItem() {
+        return Item;
     }
 
     public int getColdDown() {
@@ -108,6 +110,34 @@ public class EzItem extends Item {
 
     public EffectData getEffect() {
         return Effect;
+    }
+
+    @Override
+    public boolean onActivate(Player user) {
+        if (!this.Effect.hasEffect()) {
+            return false;
+        }
+        if (!this.Require.isUsable(user)) {
+            user.sendMessage("§c你不满足这个物品的使用条件");
+            return false;
+        }
+        if(!this.CostData.hasEnough(user)){
+            user.sendMessage("§c你消耗不起这个物品");
+            return false;
+        }
+        CostData.cost(user);
+        this.Effect.effect(user);
+        return true;
+    }
+
+    @Override
+    public boolean isConsume() {
+        return this.CostData.isConsume();
+    }
+
+    @Override
+    public String getItemKey() {
+        return this.Key;
     }
 
     public static class EffectData {
@@ -170,6 +200,10 @@ public class EzItem extends Item {
                 }
             }
         }
+
+        public boolean hasEffect() {
+            return !this.Commands.isEmpty() || !this.Attributes.isEmpty();
+        }
     }
 
     public static class Requirement {
@@ -215,8 +249,7 @@ public class EzItem extends Item {
 
         private int Money = 0;
         private int Point = 0;
-        private int Exp = 0;
-        private boolean Self = false;
+        private boolean ConsumeSelf = false;
 
         public Cost(ConfigurationSection config) {
             if (config == null) {
@@ -224,8 +257,7 @@ public class EzItem extends Item {
             }
             Money = config.getInt("Money", 0);
             Point = config.getInt("Point", 0);
-            Exp = config.getInt("Exp", 0);
-            Self = config.getBoolean("Self", false);
+            ConsumeSelf = config.getBoolean("Self", false);
         }
 
         public int getMoney() {
@@ -236,12 +268,29 @@ public class EzItem extends Item {
             return Point;
         }
 
-        public int getExp() {
-            return Exp;
+        public boolean isConsume() {
+            return ConsumeSelf;
         }
 
-        public boolean isSelf() {
-            return Self;
+        public void cost(Player p) {
+            if (Money > 0) {
+                Utils.getEconomy().withdrawPlayer(p.getName(), Money);
+            }
+            if(Point > 0){
+                Tools.getPlayerPointsAPI().take(p.getName(), Point);
+            }
+            //TODO: 消耗炼金要素
+        }
+
+        public boolean hasEnough(Player p) {
+            if (Money > 0 && !Utils.getEconomy().has(p.getName(), this.Money)) {
+                return false;
+            }
+            if (Point > 0 && Tools.getPlayerPointsAPI().look(p.getName()) < this.Point) {
+                return false;
+            }
+            //TODO: 消耗炼金要素
+            return true;
         }
 
     }

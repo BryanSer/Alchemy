@@ -4,10 +4,13 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-
 package Br.Alchemy.Item;
 
+import Br.Alchemy.Tools;
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 /**
  *
@@ -16,6 +19,28 @@ import org.bukkit.inventory.ItemStack;
  * @since 2018-10-6
  */
 public abstract class Item {
-    
-    public abstract ItemStack getItem();
+
+    public abstract String getItemKey();
+
+    protected abstract ItemStack getOriginalItem();
+
+    public ItemStack toItemStack() {
+        return toItemStack(1);
+    }
+
+    public ItemStack toItemStack(int amount) {
+        ItemStack is = this.getOriginalItem();
+        if (is == null) {
+            return null;
+        }
+        is = is.clone();
+        is.setAmount(amount);
+        ItemMeta im = is.getItemMeta();
+        List<String> lore = im.hasLore() ? im.getLore() : new ArrayList<>();
+        lore.add(Tools.encodeColorCode(ItemManager.ITEM_LORE_PREFIX + "|" + this.getItemKey()));
+        im.setLore(lore);
+        is.setItemMeta(im);
+        return is;
+    }
+
 }

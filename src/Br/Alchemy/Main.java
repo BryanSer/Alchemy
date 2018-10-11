@@ -9,6 +9,7 @@ package Br.Alchemy;
 
 import Br.Alchemy.Attribute.AttributesListener;
 import Br.Alchemy.Item.EzItem;
+import Br.Alchemy.Item.ItemManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,7 +22,7 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onEnable() {
-        EzItem.init();
+        ItemManager.init();
         Bukkit.getPluginManager().registerEvents(new AttributesListener(), this);
     }
     
