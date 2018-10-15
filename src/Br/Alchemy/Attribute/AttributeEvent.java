@@ -17,12 +17,12 @@ import org.bukkit.event.HandlerList;
  * @version 1.0
  * @since 2018-10-6
  */
-public class AttributesEvent extends Event{
+public class AttributeEvent extends Event{
     private static HandlerList Handlers = new HandlerList();
     private LivingEntity Owner;
     private AttributesData Data;
 
-    public AttributesEvent(LivingEntity Owner, AttributesData Data) {
+    public AttributeEvent(LivingEntity Owner, AttributesData Data) {
         this.Owner = Owner;
         this.Data = Data;
     }

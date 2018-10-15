@@ -79,7 +79,7 @@ public class AttributesData {
                 }
             }
         }
-        AttributesEvent evt = new AttributesEvent(Owner, this);
+        AttributeEvent evt = new AttributeEvent(Owner, this);
         Bukkit.getPluginManager().callEvent(evt);
     }
 
