@@ -4,13 +4,15 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy.Item;
+package br.bukkit.alchemy.item;
 
-import Br.Alchemy.Tools;
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Br.Alchemy.Tools;
 
 /**
  *

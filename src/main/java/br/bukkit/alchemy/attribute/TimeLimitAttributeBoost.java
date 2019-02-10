@@ -1,17 +1,15 @@
-/*
+ /*
  * 开发者:Bryan_lzh
  * QQ:390807154
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy.Attribute;
+ package br.bukkit.alchemy.attribute;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.bukkit.entity.Player;
+ import org.bukkit.entity.Player;
+
+ import java.util.ArrayList;
+ import java.util.List;
 
 /**
  *

@@ -4,11 +4,12 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy;
+package br.bukkit.alchemy;
 
-import java.util.Arrays;
 import org.black_ixx.playerpoints.PlayerPoints;
 import org.black_ixx.playerpoints.PlayerPointsAPI;
+
+import java.util.Arrays;
 
 /**
  *

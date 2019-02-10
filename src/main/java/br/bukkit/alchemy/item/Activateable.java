@@ -5,7 +5,7 @@
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
 
-package Br.Alchemy.Item;
+package br.bukkit.alchemy.item;
 
 import org.bukkit.entity.Player;
 

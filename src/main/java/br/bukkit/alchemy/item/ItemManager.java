@@ -4,19 +4,21 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy.Item;
+package br.bukkit.alchemy.item;
 
-import Br.Alchemy.Data;
-import Br.Alchemy.Tools;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import br.bukkit.alchemy.Data;
+import br.bukkit.alchemy.Tools;
 
 /**
  *

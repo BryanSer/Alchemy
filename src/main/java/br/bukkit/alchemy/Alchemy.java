@@ -4,16 +4,17 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy;
+package br.bukkit.alchemy;
 
-import Br.API.Data.ProxyUtil;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+
+import Br.API.Data.ProxyUtil;
 
 /**
  *
@@ -33,6 +34,7 @@ public abstract class Alchemy implements ProxyUtil {
 
     public abstract void onUse();
 
+    @SuppressWarnings("Duplicates")
     public ItemStack toItemStack(AlchemyInfo info, int amount) {
         ItemStack is = this.getDefaultItem().clone();
         is.setAmount(amount);

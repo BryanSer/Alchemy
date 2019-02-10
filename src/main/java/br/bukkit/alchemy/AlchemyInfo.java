@@ -4,12 +4,13 @@
  * 保留一切所有权
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
-package Br.Alchemy;
+package br.bukkit.alchemy;
+
+import org.bukkit.ChatColor;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import org.bukkit.ChatColor;
 
 /**
  *

@@ -5,13 +5,11 @@
  * 若为Bukkit插件 请前往plugin.yml查看剩余协议
  */
 
-package Br.Alchemy;
+package br.bukkit.alchemy;
 
-import Br.Alchemy.Attribute.AttributesListener;
-import Br.Alchemy.Item.EzItem;
-import Br.Alchemy.Item.ItemManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import br.bukkit.alchemy.item.ItemManager;
 
 /**
  *
@@ -23,7 +21,6 @@ public class Main extends JavaPlugin{
     @Override
     public void onEnable() {
         ItemManager.init();
-        Bukkit.getPluginManager().registerEvents(new AttributesListener(), this);
     }
     
 }
