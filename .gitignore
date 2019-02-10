@@ -4,3 +4,4 @@ manifest.mf
 /build/
 Alchemy.iml
 /libs/*
+/.idea/*
