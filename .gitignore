@@ -2,3 +2,6 @@ build.xml
 manifest.mf
 /nbproject/
 /build/
+/.idea/*
+Alchemy.iml
+/libs/*

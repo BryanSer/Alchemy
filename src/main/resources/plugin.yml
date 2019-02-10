@@ -1,0 +1,7 @@
+name: Alchemy
+version: ${project.version}
+main: br.bukkit.alchemy.Alchemy
+api-version: 1.13
+prefix: Alchemy
+depend: [WeLore, BrAPI]
+authors: [Bryan_lzh]
